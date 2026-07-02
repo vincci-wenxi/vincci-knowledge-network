@@ -162,11 +162,7 @@ python scripts/kn_dedup.py --vault <ROOT> check --concept 符号暴力
 
 ### Q13: 如何从 v2.4 迁移到 v2.5？
 
-**自动迁移**（推荐）：
-```bash
-# TODO: 创建迁移脚本
-python scripts/migrate_v24_to_v25.py --vault <ROOT> --apply
-```
+当前仓库尚未提供自动迁移脚本，建议先备份知识库，再按下面步骤手动迁移。
 
 **手动迁移**：
 1. 扫描 `03-Atomic/` 下所有笔记
