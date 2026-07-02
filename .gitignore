@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Obsidian
+.obsidian/
+.trash/
+
+# Config (contains personal paths)
+.knowledge-network-config.yaml
+
+# Test outputs
+test_output/
+*.log
+
+# Large files
+*.pdf
+*.mp4
+*.zip
+*.tar.gz
+
+# Personal notes (if testing with real vault)
+编码笔记/
+解码笔记/
+Obsidian Vault/
+Output/
+Business/
+AI融合笔记/

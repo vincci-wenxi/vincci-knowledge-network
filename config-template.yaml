@@ -1,0 +1,24 @@
+version: 2.5.0
+paths:
+  vault_root: "/path/to/your/vault"  # ⚠️ 请修改为你的知识库根目录绝对路径
+  inbox: "Obsidian Vault/00-Inbox"
+  atomic: "Obsidian Vault/03-Atomic"
+  original: "Obsidian Vault/04-原创"
+  encoded: "编码笔记"
+  decoded: "解码笔记"
+  output: "Output"
+  resources: "Obsidian Vault/05-Resources"
+  ai_fusion: "Obsidian Vault/AI融合笔记"
+  registry: "Obsidian Vault/07-System/concept-registry.yaml"
+  map: "Obsidian Vault/10-MAP/知识网络图"
+
+rules:
+  encoding_note_subdir_threshold: 20
+  ai_collaboration_review_days: 7
+  external_archive_days: 30
+
+naming:
+  atomic_note_format: "{prefix}-{code}-{concept}.md"
+  original_note_format: "{prefix}-{code}-{concept}.md"
+  encoding_note_format: "{code}-{date}-{seq}@{type}-{title}.md"
+  decoding_note_format: "{code}-{date}-{seq}@解码-{title}-解码.md"
