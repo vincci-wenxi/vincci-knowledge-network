@@ -19,6 +19,18 @@
 - ✅ **幽灵链接检测与修复**
 - ✅ **状态机自动流转**（种子→萌芽→成熟）
 
+```mermaid
+flowchart LR
+    A[手写笔记 / 摘录 / 灵感] --> B[编码笔记<br/>种子]
+    B --> C[AI 解码<br/>7 维度分析]
+    C --> D{知识单元}
+    D -->|已证实| E[03-Atomic<br/>TC / TM / TN]
+    D -->|原创| F[04-原创<br/>OT / OM / OC]
+    E --> G[知识图谱 / Canvas]
+    F --> G
+    G --> H[Output<br/>文章 / 视频 / 社群]
+```
+
 ### v2.5 核心升级
 
 相比 v2.4 版本，v2.5 实现了：
@@ -28,6 +40,15 @@
 3. **三层分类体系**：库归属 → 形态 → 学科
 4. **6种PREFIX**：`TC/TM/TN`（已证实） + `OT/OM/OC`（原创）
 5. **概念注册表增强**：新增 library 和 form 字段
+
+### 推荐阅读路径
+
+| 目标 | 入口 |
+|---|---|
+| 先看懂系统全貌 | [知识库视觉导览](docs/知识库视觉导览.md) |
+| 马上创建知识库 | [快速开始](#-快速开始) |
+| 查命名、状态、分类规则 | [常见问题](docs/FAQ.md) |
+| 配置 AI 工作流 | [SKILL工作流v2.5](docs/SKILL-v2_5.md) |
 
 ## 🚀 快速开始
 
@@ -43,7 +64,7 @@
 #### 1. 克隆仓库
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/vincci-knowledge-network.git
+git clone https://github.com/vincci-wenxi/vincci-knowledge-network.git
 cd vincci-knowledge-network
 ```
 
@@ -206,20 +227,16 @@ PREFIX-CODE-概念名.md
 ## 📚 文档
 
 - [完整架构文档](docs/文希·Obsidian知识库文件架构v2.5.md)
+- [知识库视觉导览](docs/知识库视觉导览.md)
 - [SKILL工作流v2.5](docs/SKILL-v2_5.md)
-- [v2.5改动说明](docs/v2.5改动说明与脚本调整指引.md)
+- [v2.5改动说明](docs/文希·v2.5改动说明与脚本调整指引.md)
 - [常见问题](docs/FAQ.md)
 
 ## 🔧 从 v2.4 迁移
 
 如果你已有 v2.4 版本的知识库，参考：
 
-```bash
-# 运行迁移脚本（自动识别 is_original 并分流）
-python scripts/migrate_v24_to_v25.py --vault <知识库根目录> --apply
-```
-
-详细迁移指引见 [v2.5改动说明](docs/v2.5改动说明与脚本调整指引.md)
+详细迁移指引见 [v2.5改动说明](docs/文希·v2.5改动说明与脚本调整指引.md)。当前仓库尚未提供自动迁移脚本，建议先按文档手动迁移并做好备份。
 
 ## 🤝 贡献
 
@@ -237,4 +254,3 @@ MIT License
 ---
 
 **让知识有序生长，已证实归已证实，原创归原创。**
-# vincci-knowledge-network

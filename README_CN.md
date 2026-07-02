@@ -4,6 +4,18 @@
 
 这是一个完整的 **Obsidian 知识管理系统**，实现了编码-解码-原子化的三段式知识加工流程。
 
+```mermaid
+flowchart LR
+    A[手写笔记 / 摘录 / 灵感] --> B[编码笔记<br/>种子]
+    B --> C[AI 解码<br/>7 维度分析]
+    C --> D{知识单元}
+    D -->|已证实| E[03-Atomic<br/>TC / TM / TN]
+    D -->|原创| F[04-原创<br/>OT / OM / OC]
+    E --> G[知识图谱 / Canvas]
+    F --> G
+    G --> H[Output<br/>文章 / 视频 / 社群]
+```
+
 ### 核心特色
 
 🌟 **原子笔记与原创库分离** - 已证实的知识与原创概念物理隔离  
@@ -11,6 +23,15 @@
 🤖 **AI辅助工作流** - 从编码到知识图谱全流程支持  
 🔧 **Python自动化工具** - 去重、修链、状态流转一键完成  
 📖 **完善的文档** - 20+ FAQ + 详细教程
+
+### 先看哪一份
+
+| 你想做什么 | 推荐入口 |
+|---|---|
+| 先看懂这套系统怎么运转 | [知识库视觉导览](docs/知识库视觉导览.md) |
+| 直接创建 Obsidian 知识库 | [10分钟快速开始](#-10分钟快速开始) |
+| 查命名、状态、分类规则 | [FAQ](docs/FAQ.md) |
+| 给 AI 配置完整工作流 | [SKILL-v2_5.md](docs/SKILL-v2_5.md) |
 
 ---
 
@@ -23,7 +44,7 @@
 python3 --version  # 需要 3.7+
 
 # 克隆项目
-git clone https://github.com/YOUR_USERNAME/vincci-knowledge-network.git
+git clone https://github.com/vincci-wenxi/vincci-knowledge-network.git
 cd vincci-knowledge-network
 
 # 安装依赖
@@ -188,27 +209,20 @@ python scripts/kn_status.py --vault ~/文希知识库 advance --apply
 
 ## 🔄 工作流程图
 
+```mermaid
+flowchart TD
+    A[编码阶段<br/>手写笔记 / 读书摘要] --> B[编码笔记<br/>status: 种子]
+    B --> C[解码阶段<br/>AI 7维度分析]
+    C --> D[解码笔记 + 知识单元]
+    D --> E{归类判断}
+    E -->|已证实知识| F[03-Atomic<br/>TC / TM / TN]
+    E -->|原创内容| G[04-原创<br/>OT / OM / OC]
+    F --> H[建立双向链接]
+    G --> H
+    H --> I[知识图谱 / Canvas<br/>status: 成熟]
 ```
-1. 编码阶段
-   ↓
-   手写笔记 → 编码笔记（status=种子）
-   存放：编码笔记/XX-学科/
 
-2. 解码阶段
-   ↓
-   AI 7维度分析 → 解码笔记 + 提取知识单元
-   |
-   ├→ 已证实知识 → 03-Atomic/（TC/TM/TN）
-   └→ 原创内容 → 04-原创/（OT/OM/OC）
-   
-   status → 萌芽
-
-3. 知识图谱
-   ↓
-   建立双向链接 → Canvas可视化
-   
-   status → 成熟
-```
+更完整的思维导图、决策树和 Obsidian 可视化建议见 [知识库视觉导览](docs/知识库视觉导览.md)。
 
 ---
 
@@ -243,10 +257,10 @@ python scripts/kn_status.py --vault ~/文希知识库 advance --apply
 |------|------|
 | [SKILL-v2_5.md](docs/SKILL-v2_5.md) | 完整工作流规范 |
 | [FAQ.md](docs/FAQ.md) | 20+ 常见问题解答 |
+| [知识库视觉导览](docs/知识库视觉导览.md) | 流程图、思维导图、命名拆解与可视化建议 |
 | [文希·Obsidian知识库文件架构v2.5.md](docs/文希·Obsidian知识库文件架构v2.5.md) | 架构详解 |
 | [v2.5改动说明](docs/文希·v2.5改动说明与脚本调整指引.md) | 版本变更 |
 | [GITHUB_SETUP.md](GITHUB_SETUP.md) | GitHub 上传指南 |
-| [立即上传到GitHub.md](立即上传到GitHub.md) | 快速上传流程 |
 
 ---
 
@@ -286,12 +300,7 @@ AI 拿不准时会询问你。
 <details>
 <summary><b>Q: 如何从 v2.4 迁移？</b></summary>
 
-运行迁移脚本（开发中）：
-```bash
-python scripts/migrate_v24_to_v25.py --vault ~/文希知识库 --apply
-```
-
-或参考 [v2.5改动说明](docs/文希·v2.5改动说明与脚本调整指引.md) 手动迁移。
+当前仓库尚未提供自动迁移脚本。请先备份知识库，再参考 [v2.5改动说明](docs/文希·v2.5改动说明与脚本调整指引.md) 手动迁移。
 
 </details>
 
@@ -299,7 +308,7 @@ python scripts/migrate_v24_to_v25.py --vault ~/文希知识库 --apply
 <summary><b>Q: 遇到问题怎么办？</b></summary>
 
 1. 查看 [FAQ.md](docs/FAQ.md)
-2. 提交 [GitHub Issue](https://github.com/YOUR_USERNAME/vincci-knowledge-network/issues)
+2. 提交 [GitHub Issue](https://github.com/vincci-wenxi/vincci-knowledge-network/issues)
 3. 加入文希AI社区讨论
 
 </details>
