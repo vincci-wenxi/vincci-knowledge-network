@@ -41,29 +41,35 @@ flowchart LR
 
 ```bash
 # 确认 Python 版本
-python3 --version  # 需要 3.7+
+python --version  # 需要 3.7+
 
 # 克隆项目
 git clone https://github.com/vincci-wenxi/vincci-knowledge-network.git
 cd vincci-knowledge-network
 
 # 安装依赖
-pip3 install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 ### 创建知识库
 
+Windows PowerShell：
+
+```powershell
+.\setup-vault.ps1 -VaultRoot "$HOME\文希知识库"
+```
+
+macOS / Linux / Git Bash：
+
 ```bash
-# 1. 编辑建库脚本，修改目标路径（第6行）
-nano setup-vault.sh
-# 将 VAULT_ROOT="$HOME/文希知识库" 改为你想要的路径
+VAULT_ROOT="$HOME/文希知识库" bash setup-vault.sh
+```
 
-# 2. 运行建库脚本
-bash setup-vault.sh
+建库脚本会自动生成 `.knowledge-network-config.yaml`。如果你手动建库，可以复制模板再改路径：
 
-# 3. 配置路径
+```bash
 cp config-template.yaml .knowledge-network-config.yaml
-nano .knowledge-network-config.yaml  # 填入你的 vault_root
+# 编辑 .knowledge-network-config.yaml，填入你的 vault_root
 ```
 
 ### 用 Obsidian 打开

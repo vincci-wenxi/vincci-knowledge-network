@@ -50,7 +50,7 @@ git config --global --list
 在项目目录执行：
 
 ```bash
-cd "/Users/vpn/Library/Mobile Documents/com~apple~CloudDocs/Claude MD/vincci-knowledge-network"
+cd "<你的项目目录>/vincci-knowledge-network"
 
 # 添加远程仓库（替换 YOUR_USERNAME 为你的GitHub用户名）
 git remote add origin https://github.com/YOUR_USERNAME/vincci-knowledge-network.git
@@ -82,20 +82,27 @@ git push -u origin main
 
 ### B. 使用 SSH（推荐熟练用户）
 
+macOS:
 ```bash
 # 1. 生成 SSH 密钥（如果没有）
 ssh-keygen -t ed25519 -C "你的邮箱@example.com"
 
 # 2. 复制公钥
 cat ~/.ssh/id_ed25519.pub | pbcopy
+```
 
-# 3. 在 GitHub 添加 SSH 密钥
-# Settings → SSH and GPG keys → New SSH key → 粘贴公钥
+Windows PowerShell:
+```powershell
+ssh-keygen -t ed25519 -C "你的邮箱@example.com"
+Get-Content "$env:USERPROFILE\.ssh\id_ed25519.pub" | Set-Clipboard
+```
 
-# 4. 添加远程仓库（SSH 地址）
+3. 在 GitHub 添加 SSH 密钥：Settings → SSH and GPG keys → New SSH key → 粘贴公钥
+
+4. 添加远程仓库并推送：
+
+```bash
 git remote add origin git@github.com:YOUR_USERNAME/vincci-knowledge-network.git
-
-# 5. 推送
 git branch -M main
 git push -u origin main
 ```
@@ -114,7 +121,7 @@ git push -u origin main
 每次修改后推送：
 
 ```bash
-cd "/Users/vpn/Library/Mobile Documents/com~apple~CloudDocs/Claude MD/vincci-knowledge-network"
+cd "<你的项目目录>/vincci-knowledge-network"
 
 # 查看修改
 git status

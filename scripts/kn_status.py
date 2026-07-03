@@ -55,7 +55,6 @@ def build_linked_atomic(cfg):
     
     # 先建立 文件名->是否有出链
     has_out = {}
-    all_names = {Path(n["path"]).stem for n in all_notes}
     for n in all_notes:
         links = LINK_RE.findall(n["body"])
         has_out[Path(n["path"]).stem] = len(links) > 0
@@ -69,7 +68,7 @@ def build_linked_atomic(cfg):
     mature_codes = set()
     for n in all_notes:
         stem = Path(n["path"]).stem
-        is_linked = has_out.get(stem) or (stem in referenced)
+        is_linked = has_out.get(stem) and (stem in referenced)
         if not is_linked:
             continue
         sn = n["fm"].get("source_note")

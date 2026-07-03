@@ -111,10 +111,11 @@ git push origin feature/新功能名称
 - 链接使用相对路径（同仓库内）
 - 保持目录结构清晰
 
-### Shell 脚本
+### 脚本
 
-- 添加 `#!/bin/bash` 开头
-- 使用 `set -e` 遇错退出
+- Shell 脚本添加 `#!/usr/bin/env bash` 开头
+- PowerShell 脚本使用 `.ps1` 后缀，并提供与 Shell 脚本等价的入口
+- 使用 `set -e` 或 `$ErrorActionPreference = "Stop"` 遇错退出
 - 重要操作前添加 echo 说明
 - 变量使用 `${VAR_NAME}` 格式
 
@@ -131,7 +132,8 @@ vincci-knowledge-network/
 │   ├── FAQ.md
 │   ├── SKILL-v2_5.md
 │   └── ...
-├── setup-vault.sh     # 建库脚本
+├── setup-vault.sh     # macOS / Linux / Git Bash 建库脚本
+├── setup-vault.ps1    # Windows PowerShell 建库脚本
 ├── README.md
 ├── LICENSE
 └── requirements.txt
