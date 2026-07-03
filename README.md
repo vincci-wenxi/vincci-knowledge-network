@@ -71,21 +71,26 @@ cd vincci-knowledge-network
 #### 2. 安装依赖
 
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 #### 3. 创建知识库结构
 
-```bash
-# 修改 setup-vault.sh 中的目标路径（第6行）
-# VAULT_ROOT="你的知识库根目录路径"
+Windows PowerShell:
 
-bash setup-vault.sh
+```powershell
+.\setup-vault.ps1 -VaultRoot "$HOME\文希知识库"
+```
+
+macOS / Linux / Git Bash:
+
+```bash
+VAULT_ROOT="$HOME/文希知识库" bash setup-vault.sh
 ```
 
 #### 4. 配置路径
 
-复制配置模板并编辑：
+建库脚本会自动生成 `.knowledge-network-config.yaml`。如果你手动建库，可以复制配置模板并编辑：
 
 ```bash
 cp config-template.yaml .knowledge-network-config.yaml

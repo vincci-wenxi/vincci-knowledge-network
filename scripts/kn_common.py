@@ -31,18 +31,22 @@ STATUS_ORDER = ["种子", "萌芽", "成熟", "归档"]
 
 def load_config(vault_root):
     """读取 .knowledge-network-config.yaml，缺省用默认。"""
-    cfg_path = Path(vault_root) / ".knowledge-network-config.yaml"
+    root = Path(vault_root).expanduser()
+    cfg_path = root / ".knowledge-network-config.yaml"
     cfg = dict(DEFAULT_CONFIG)
     if cfg_path.exists():
         with open(cfg_path, encoding="utf-8") as f:
             data = yaml.safe_load(f) or {}
         cfg.update(data.get("paths", {}))
-    cfg["_root"] = str(vault_root)
+    cfg["_root"] = str(root)
     return cfg
 
 
 def abspath(cfg, key):
-    return Path(cfg["_root"]) / cfg[key]
+    path = Path(str(cfg[key])).expanduser()
+    if path.is_absolute():
+        return path
+    return Path(cfg["_root"]) / path
 
 
 def get_library_from_prefix(prefix):
