@@ -31,15 +31,14 @@ flowchart LR
     G --> H[Output<br/>文章 / 视频 / 社群]
 ```
 
-### v2.5 核心升级
+### 核心特性
 
-相比 v2.4 版本，v2.5 实现了：
-
-1. **原子笔记重新定义**：仅存放已被证实/研究出的知识（TC/TM/TN）
-2. **原创库独立**：用户新创内容拆分到 `04-原创/`（OT/OM/OC）
-3. **三层分类体系**：库归属 → 形态 → 学科
-4. **6种PREFIX**：`TC/TM/TN`（已证实） + `OT/OM/OC`（原创）
-5. **概念注册表增强**：新增 library 和 form 字段
+1. **原子笔记与原创库分离**：已被证实的知识（TC/TM/TN）与你的原创内容（OT/OM/OC）物理分离
+2. **三层分类体系**：库归属 → 形态 → 学科，清晰的知识组织结构
+3. **6种PREFIX**：`TC/TM/TN`（已证实） + `OT/OM/OC`（原创），一目了然
+4. **编码-解码-原子化**：三段式知识加工流程，从信息到知识的系统化转化
+5. **去景观化约束**：AI 输出必须可操作、可验证，拒绝空洞套话
+6. **双向链接网络**：自动建立知识关联，形成你的认知图谱
 
 ### 推荐阅读路径
 
@@ -102,10 +101,13 @@ cp docs/SKILL-v2_5.md .claude/skills/knowledge-network-workflow.md
 ## 📁 目录结构
 
 ```
-文希知识库/
+文希知识网络/
 ├── 编码笔记/                   # 手写/摘录，按7学科分类
 ├── 解码笔记/                   # AI 7维度解码
 ├── Obsidian Vault/
+│   ├── 00-Inbox/              # 未整理笔记 / 收件箱
+│   ├── 01-Projects/           # PARA 项目
+│   ├── 02-Areas/              # PARA 领域
 │   ├── 03-Atomic/             # 原子笔记（已证实）
 │   │   ├── TC-术语/
 │   │   ├── TM-思维模型/
@@ -114,8 +116,17 @@ cp docs/SKILL-v2_5.md .claude/skills/knowledge-network-workflow.md
 │   │   ├── OT-原创术语/
 │   │   ├── OM-原创思维模型/
 │   │   └── OC-原创概念/
-│   └── 07-System/
-│       └── concept-registry.yaml
+│   ├── 05-Resources/
+│   ├── 06-参考资料/
+│   ├── 07-System/
+│   │   └── concept-registry.yaml
+│   ├── 08-Daily/
+│   ├── 09-MOC/
+│   ├── 10-MAP/
+│   ├── 11-Data/
+│   └── AI融合笔记/
+├── Output/
+├── Business/
 ├── .claude/skills/
 └── .knowledge-network-config.yaml
 ```
@@ -226,17 +237,10 @@ PREFIX-CODE-概念名.md
 
 ## 📚 文档
 
-- [完整架构文档](docs/文希·Obsidian知识库文件架构v2.5.md)
+- [v2.5完整说明与使用指南](docs/文希知识网络v2.5完整说明与使用指南.md)
 - [知识库视觉导览](docs/知识库视觉导览.md)
 - [SKILL工作流v2.5](docs/SKILL-v2_5.md)
-- [v2.5改动说明](docs/文希·v2.5改动说明与脚本调整指引.md)
 - [常见问题](docs/FAQ.md)
-
-## 🔧 从 v2.4 迁移
-
-如果你已有 v2.4 版本的知识库，参考：
-
-详细迁移指引见 [v2.5改动说明](docs/文希·v2.5改动说明与脚本调整指引.md)。当前仓库尚未提供自动迁移脚本，建议先按文档手动迁移并做好备份。
 
 ## 🤝 贡献
 

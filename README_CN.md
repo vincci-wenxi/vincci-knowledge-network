@@ -22,7 +22,7 @@ flowchart LR
 📝 **7学科分类体系** - LE/DK/AP/CE/PA/LT/XX 完整覆盖  
 🤖 **AI辅助工作流** - 从编码到知识图谱全流程支持  
 🔧 **Python自动化工具** - 去重、修链、状态流转一键完成  
-📖 **完善的文档** - 20+ FAQ + 详细教程
+📖 **完善的文档** - 17 个 FAQ + 详细教程
 
 ### 先看哪一份
 
@@ -56,7 +56,7 @@ pip3 install -r requirements.txt
 ```bash
 # 1. 编辑建库脚本，修改目标路径（第6行）
 nano setup-vault.sh
-# 将 VAULT_ROOT="$HOME/文希知识库" 改为你想要的路径
+# 将 VAULT_ROOT="$HOME/文希知识网络" 改为你想要的路径
 
 # 2. 运行建库脚本
 bash setup-vault.sh
@@ -77,7 +77,7 @@ nano .knowledge-network-config.yaml  # 填入你的 vault_root
 ## 📁 目录结构一览
 
 ```
-文希知识库/
+文希知识网络/
 ├── 编码笔记/          📝 手写笔记，按7学科分类
 │   ├── 01-LE-人生体验/
 │   ├── 02-DK-学科知识/
@@ -91,6 +91,10 @@ nano .knowledge-network-config.yaml  # 填入你的 vault_root
 │   └── （镜像7学科）
 │
 ├── Obsidian Vault/
+│   ├── 00-Inbox/      📥 未整理笔记 / 收件箱
+│   ├── 01-Projects/   📌 PARA 项目
+│   ├── 02-Areas/      🧭 PARA 领域
+│   │
 │   ├── 03-Atomic/     ⚛️ 原子笔记（已证实）
 │   │   ├── TC-术语/
 │   │   ├── TM-思维模型/
@@ -101,8 +105,15 @@ nano .knowledge-network-config.yaml  # 填入你的 vault_root
 │   │   ├── OM-原创思维模型/
 │   │   └── OC-原创概念/
 │   │
-│   └── 07-System/
-│       └── concept-registry.yaml  📋 概念注册表
+│   ├── 05-Resources/  📚 外部资料
+│   ├── 06-参考资料/
+│   ├── 07-System/
+│   │   └── concept-registry.yaml  📋 概念注册表
+│   ├── 08-Daily/
+│   ├── 09-MOC/
+│   ├── 10-MAP/
+│   ├── 11-Data/
+│   └── AI融合笔记/
 │
 └── Output/            📤 可发布内容
 ```
@@ -115,36 +126,36 @@ nano .knowledge-network-config.yaml  # 填入你的 vault_root
 
 ```bash
 # 扫描全库，查找重复概念
-python scripts/kn_dedup.py --vault ~/文希知识库 scan
+python scripts/kn_dedup.py --vault ~/文希知识网络 scan
 
 # 检查单个概念是否已存在
-python scripts/kn_dedup.py --vault ~/文希知识库 check --concept 符号暴力
+python scripts/kn_dedup.py --vault ~/文希知识网络 check --concept 符号暴力
 
 # 重建概念注册表（先预览）
-python scripts/kn_dedup.py --vault ~/文希知识库 sync-registry
+python scripts/kn_dedup.py --vault ~/文希知识网络 sync-registry
 
 # 确认无误后写入
-python scripts/kn_dedup.py --vault ~/文希知识库 sync-registry --apply
+python scripts/kn_dedup.py --vault ~/文希知识网络 sync-registry --apply
 ```
 
 ### 链接修复
 
 ```bash
 # 检查幽灵链接（断链）
-python scripts/kn_links.py --vault ~/文希知识库 check
+python scripts/kn_links.py --vault ~/文希知识网络 check
 
 # 自动修复
-python scripts/kn_links.py --vault ~/文希知识库 fix --apply
+python scripts/kn_links.py --vault ~/文希知识网络 fix --apply
 ```
 
 ### 状态管理
 
 ```bash
 # 检查可流转的笔记
-python scripts/kn_status.py --vault ~/文希知识库 check
+python scripts/kn_status.py --vault ~/文希知识网络 check
 
 # 自动流转状态（种子→萌芽→成熟）
-python scripts/kn_status.py --vault ~/文希知识库 advance --apply
+python scripts/kn_status.py --vault ~/文希知识网络 advance --apply
 ```
 
 ---
@@ -256,25 +267,14 @@ flowchart TD
 | 文档 | 内容 |
 |------|------|
 | [SKILL-v2_5.md](docs/SKILL-v2_5.md) | 完整工作流规范 |
-| [FAQ.md](docs/FAQ.md) | 20+ 常见问题解答 |
+| [文希知识网络v2.5完整说明与使用指南.md](docs/文希知识网络v2.5完整说明与使用指南.md) | 系统优势、完整文件架构、脚本用法与落地清单 |
+| [FAQ.md](docs/FAQ.md) | 17 个常见问题解答 |
 | [知识库视觉导览](docs/知识库视觉导览.md) | 流程图、思维导图、命名拆解与可视化建议 |
-| [文希·Obsidian知识库文件架构v2.5.md](docs/文希·Obsidian知识库文件架构v2.5.md) | 架构详解 |
-| [v2.5改动说明](docs/文希·v2.5改动说明与脚本调整指引.md) | 版本变更 |
 | [GITHUB_SETUP.md](GITHUB_SETUP.md) | GitHub 上传指南 |
 
 ---
 
 ## ❓ 快速答疑
-
-<details>
-<summary><b>Q: v2.5 和 v2.4 有什么区别？</b></summary>
-
-核心区别是**物理分离**：
-- v2.4: 原子笔记混装（TC/CC/MM）
-- v2.5: 已证实（TC/TM/TN）与原创（OT/OM/OC）分离
-- 新增 `04-原创/` 独立库
-
-</details>
 
 <details>
 <summary><b>Q: 什么算"已证实"，什么算"原创"？</b></summary>
@@ -294,13 +294,6 @@ AI 拿不准时会询问你。
 - 加 `--apply` = 真正修改
 
 建议：首次运行先不加 `--apply`，确认无误再加。
-
-</details>
-
-<details>
-<summary><b>Q: 如何从 v2.4 迁移？</b></summary>
-
-当前仓库尚未提供自动迁移脚本。请先备份知识库，再参考 [v2.5改动说明](docs/文希·v2.5改动说明与脚本调整指引.md) 手动迁移。
 
 </details>
 

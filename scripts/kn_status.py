@@ -46,8 +46,7 @@ def build_decode_index(cfg):
 def build_linked_atomic(cfg):
     """
     v2.5: 返回已建立双链的笔记，映射回其 source_note(编码 code)。
-    判定"双链"：该笔记 body 含 [[...]] 且被其他笔记反链。
-    简化实现：笔记 body 中存在 [[...]] 即视为已织入网络（出链）。
+    判定"双链"：该笔记 body 含 [[...]]，且该笔记被其他知识笔记反链。
     返回: set(编码 code) 表示这些编码已有成熟笔记。
     """
     # v2.5: 扫描原子笔记+原创库
@@ -55,11 +54,10 @@ def build_linked_atomic(cfg):
     
     # 先建立 文件名->是否有出链
     has_out = {}
-    all_names = {Path(n["path"]).stem for n in all_notes}
     for n in all_notes:
         links = LINK_RE.findall(n["body"])
         has_out[Path(n["path"]).stem] = len(links) > 0
-    
+
     # 反链：被任何笔记 [[]] 指向
     referenced = set()
     for n in all_notes:
@@ -69,7 +67,8 @@ def build_linked_atomic(cfg):
     mature_codes = set()
     for n in all_notes:
         stem = Path(n["path"]).stem
-        is_linked = has_out.get(stem) or (stem in referenced)
+        # 双链必须同时满足：自己有出链，并且被其他知识笔记反链。
+        is_linked = has_out.get(stem, False) and (stem in referenced)
         if not is_linked:
             continue
         sn = n["fm"].get("source_note")
