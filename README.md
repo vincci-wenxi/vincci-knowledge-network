@@ -21,15 +21,15 @@
 
 ```mermaid
 flowchart LR
-    A[手写笔记 / 摘录 / 灵感] --> I[00-Inbox / AI融合笔记<br/>原始材料]
-    I -->|@编码| B[编码笔记<br/>种子]
-    B --> C[AI 解码<br/>7 项解码分析]
-    C --> D{知识单元}
-    D -->|已证实| E[03-Atomic<br/>TC / TM / TN]
-    D -->|原创| F[04-原创<br/>OT / OM / OC]
-    E --> G[知识图谱 / Canvas]
-    F --> G
-    G --> H[Output<br/>文章 / 视频 / 社群]
+    raw["手写笔记 / 摘录 / 灵感"] --> inbox["00-Inbox / AI融合笔记<br/>原始材料"]
+    inbox -->|"编码"| encoded["编码笔记<br/>种子"]
+    encoded --> decoded["AI 解码<br/>7 项解码分析"]
+    decoded --> unit{知识单元}
+    unit -->|已证实| atomic["03-Atomic<br/>TC / TM / TN"]
+    unit -->|原创| original["04-原创<br/>OT / OM / OC"]
+    atomic --> map["知识图谱 / Canvas"]
+    original --> map
+    map --> output["Output<br/>文章 / 视频 / 社群"]
 ```
 
 ### 核心特性

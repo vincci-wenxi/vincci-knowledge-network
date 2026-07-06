@@ -6,15 +6,15 @@
 
 ```mermaid
 flowchart LR
-    A[手写笔记 / 摘录 / 灵感] --> I[00-Inbox / AI融合笔记<br/>原始材料]
-    I -->|@编码| B[编码笔记<br/>种子]
-    B --> C[AI 解码<br/>7 项解码分析]
-    C --> D{知识单元}
-    D -->|已证实| E[03-Atomic<br/>TC / TM / TN]
-    D -->|原创| F[04-原创<br/>OT / OM / OC]
-    E --> G[知识图谱 / Canvas]
-    F --> G
-    G --> H[Output<br/>文章 / 视频 / 社群]
+    raw["手写笔记 / 摘录 / 灵感"] --> inbox["00-Inbox / AI融合笔记<br/>原始材料"]
+    inbox -->|"编码"| encoded["编码笔记<br/>种子"]
+    encoded --> decoded["AI 解码<br/>7 项解码分析"]
+    decoded --> unit{知识单元}
+    unit -->|已证实| atomic["03-Atomic<br/>TC / TM / TN"]
+    unit -->|原创| original["04-原创<br/>OT / OM / OC"]
+    atomic --> map["知识图谱 / Canvas"]
+    original --> map
+    map --> output["Output<br/>文章 / 视频 / 社群"]
 ```
 
 ### 核心特色
@@ -223,15 +223,15 @@ python scripts/kn_status.py --vault ~/文希知识网络 advance --apply
 
 ```mermaid
 flowchart TD
-    A[原始材料<br/>00-Inbox / AI融合笔记] -->|@编码| B[编码笔记<br/>status: 种子]
-    B --> C[解码阶段<br/>AI 7项解码分析]
-    C --> D[解码笔记 + 知识单元]
-    D --> E{归类判断}
-    E -->|已证实知识| F[03-Atomic<br/>TC / TM / TN]
-    E -->|原创内容| G[04-原创<br/>OT / OM / OC]
-    F --> H[建立双向链接]
-    G --> H
-    H --> I[知识图谱 / Canvas<br/>status: 成熟]
+    raw["原始材料<br/>00-Inbox / AI融合笔记"] -->|"编码"| encoded["编码笔记<br/>status: 种子"]
+    encoded --> decode["解码阶段<br/>AI 7项解码分析"]
+    decode --> units["解码笔记 + 知识单元"]
+    units --> classify{归类判断}
+    classify -->|已证实知识| atomic["03-Atomic<br/>TC / TM / TN"]
+    classify -->|原创内容| original["04-原创<br/>OT / OM / OC"]
+    atomic --> links["建立双向链接"]
+    original --> links
+    links --> map["知识图谱 / Canvas<br/>status: 成熟"]
 ```
 
 更完整的思维导图、决策树和 Obsidian 可视化建议见 [知识库视觉导览](docs/知识库视觉导览.md)。
