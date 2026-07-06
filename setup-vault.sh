@@ -117,12 +117,16 @@ cat > "$VAULT_ROOT/README.md" << EOF
 ## 快速开始
 
 1. 用 Obsidian 打开这个文件夹（$VAULT_ROOT）
-2. 开始在 \`编码笔记/\` 中记录你的想法
-3. 使用 Python 脚本进行知识管理
+2. 先把想法、摘录、碎片材料放入 \`Obsidian Vault/00-Inbox/\`
+3. AI 原始输出或对话记录放入 \`Obsidian Vault/AI融合笔记/\`
+4. 确认后运行 \`@编码\` 生成 \`编码笔记/\`
+5. 使用 Python 脚本进行知识管理
 
 ## 目录说明
 
-- \`编码笔记/\`: 手写/摘录笔记，按7学科分类
+- \`Obsidian Vault/00-Inbox/\`: 未整理笔记 / 收件箱，存放原始碎片
+- \`Obsidian Vault/AI融合笔记/\`: AI 原始输出和对话记录
+- \`编码笔记/\`: \`@编码\` 后生成的结构化笔记，按7学科分类
 - \`解码笔记/\`: AI 解码后的笔记
 - \`Obsidian Vault/03-Atomic/\`: 已被证实的知识（原子笔记）
 - \`Obsidian Vault/04-原创/\`: 你自己创造的概念和框架
@@ -144,7 +148,8 @@ echo "📍 位置: $VAULT_ROOT"
 echo ""
 echo "下一步："
 echo "1. 用 Obsidian 打开: $VAULT_ROOT"
-echo "2. 开始记录你的第一条编码笔记"
-echo "3. 使用 Python 脚本管理知识网络"
+echo "2. 先把第一条原始笔记放入 Obsidian Vault/00-Inbox"
+echo "3. 需要进入正式体系时，运行 @编码 生成编码笔记"
+echo "4. 使用 Python 脚本管理知识网络"
 echo ""
 echo "🎉 祝知识管理愉快！"

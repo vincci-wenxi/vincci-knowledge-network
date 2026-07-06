@@ -21,8 +21,9 @@
 
 ```mermaid
 flowchart LR
-    A[手写笔记 / 摘录 / 灵感] --> B[编码笔记<br/>种子]
-    B --> C[AI 解码<br/>7 维度分析]
+    A[手写笔记 / 摘录 / 灵感] --> I[00-Inbox / AI融合笔记<br/>原始材料]
+    I -->|@编码| B[编码笔记<br/>种子]
+    B --> C[AI 解码<br/>7 项解码分析]
     C --> D{知识单元}
     D -->|已证实| E[03-Atomic<br/>TC / TM / TN]
     D -->|原创| F[04-原创<br/>OT / OM / OC]
@@ -102,8 +103,8 @@ cp docs/SKILL-v2_5.md .claude/skills/knowledge-network-workflow.md
 
 ```
 文希知识网络/
-├── 编码笔记/                   # 手写/摘录，按7学科分类
-├── 解码笔记/                   # AI 7维度解码
+├── 编码笔记/                   # @编码 后生成的结构化笔记
+├── 解码笔记/                   # AI 7项解码分析
 ├── Obsidian Vault/
 │   ├── 00-Inbox/              # 未整理笔记 / 收件箱
 │   ├── 01-Projects/           # PARA 项目

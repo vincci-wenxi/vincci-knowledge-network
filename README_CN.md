@@ -6,8 +6,9 @@
 
 ```mermaid
 flowchart LR
-    A[手写笔记 / 摘录 / 灵感] --> B[编码笔记<br/>种子]
-    B --> C[AI 解码<br/>7 维度分析]
+    A[手写笔记 / 摘录 / 灵感] --> I[00-Inbox / AI融合笔记<br/>原始材料]
+    I -->|@编码| B[编码笔记<br/>种子]
+    B --> C[AI 解码<br/>7 项解码分析]
     C --> D{知识单元}
     D -->|已证实| E[03-Atomic<br/>TC / TM / TN]
     D -->|原创| F[04-原创<br/>OT / OM / OC]
@@ -78,7 +79,7 @@ nano .knowledge-network-config.yaml  # 填入你的 vault_root
 
 ```
 文希知识网络/
-├── 编码笔记/          📝 手写笔记，按7学科分类
+├── 编码笔记/          📝 @编码 后生成的结构化笔记
 │   ├── 01-LE-人生体验/
 │   ├── 02-DK-学科知识/
 │   ├── 03-AP-艺术感知/
@@ -222,8 +223,8 @@ python scripts/kn_status.py --vault ~/文希知识网络 advance --apply
 
 ```mermaid
 flowchart TD
-    A[编码阶段<br/>手写笔记 / 读书摘要] --> B[编码笔记<br/>status: 种子]
-    B --> C[解码阶段<br/>AI 7维度分析]
+    A[原始材料<br/>00-Inbox / AI融合笔记] -->|@编码| B[编码笔记<br/>status: 种子]
+    B --> C[解码阶段<br/>AI 7项解码分析]
     C --> D[解码笔记 + 知识单元]
     D --> E{归类判断}
     E -->|已证实知识| F[03-Atomic<br/>TC / TM / TN]
@@ -242,8 +243,9 @@ flowchart TD
 ### 每日流程
 
 **早晨** ☀️
-- 在 `编码笔记/` 写新想法/读书摘要
-- 使用简洁的标题和标签
+- 把新想法、读书摘录、碎片材料先放入 `Obsidian Vault/00-Inbox/`
+- AI 原始输出或对话记录先放入 `Obsidian Vault/AI融合笔记/`
+- 需要进入正式体系时，再运行 `@编码` 生成 `编码笔记/`
 
 **下午** 🌤️
 - 运行 AI 解码分析
