@@ -1,119 +1,124 @@
-# 文希知识网络 v2.5
+# Wenxi Knowledge Network v2.5
 
-> Obsidian 知识管理系统 — 原子笔记（已证实）与原创库（新创）分离版
-> 
-> 众推客科技 · 文希AI社区 · #AI搭子圈
+> An Obsidian-based knowledge workflow that separates verified knowledge from original ideas.
+>
+> Zhongtuike Technology · Wenxi AI Community
 
 ![Version](https://img.shields.io/badge/version-2.5.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Python](https://img.shields.io/badge/python-3.7+-yellow)
 
-## 📖 项目简介
+## Overview
 
-这是一套完整的 Obsidian 知识库管理系统，实现了：
+Wenxi Knowledge Network v2.5 is a complete Obsidian knowledge management system built around an encode, decode, and atomize workflow.
 
-- ✅ **编码-解码-原子化** 三段式知识加工流程
-- ✅ **原子笔记与原创库物理分离**（已证实 vs 新创）
-- ✅ **7学科分类体系**（LE/DK/AP/CE/PA/LT/XX）
-- ✅ **自动去重与概念注册表**
-- ✅ **幽灵链接检测与修复**
-- ✅ **状态机自动流转**（种子→萌芽→成熟）
+It helps you:
+
+- Keep raw notes out of the formal note system until they are encoded
+- Separate verified knowledge from your original concepts and frameworks
+- Organize notes with 7 discipline codes: `LE/DK/AP/CE/PA/LT/XX`
+- Maintain a concept registry and detect duplicates
+- Check and repair ghost links
+- Advance note status from `Seed` to `Sprout` to `Mature`
 
 ```mermaid
 flowchart LR
-    raw["手写笔记 / 摘录 / 灵感"] --> inbox["00-Inbox / AI融合笔记<br/>原始材料"]
-    inbox -->|"编码"| encoded["编码笔记<br/>种子"]
-    encoded --> decoded["AI 解码<br/>7 项解码分析"]
-    decoded --> unit{知识单元}
-    unit -->|已证实| atomic["03-Atomic<br/>TC / TM / TN"]
-    unit -->|原创| original["04-原创<br/>OT / OM / OC"]
-    atomic --> map["知识图谱 / Canvas"]
+    raw["Handwritten notes / excerpts / ideas"] --> inbox["00-Inbox / AI Fusion Notes<br/>raw material"]
+    inbox -->|"Encode"| encoded["Encoded notes<br/>Seed"]
+    encoded --> decoded["AI decoding<br/>7 analysis checks"]
+    decoded --> unit{Knowledge unit}
+    unit -->|Verified| atomic["03-Atomic<br/>TC / TM / TN"]
+    unit -->|Original| original["04-Original<br/>OT / OM / OC"]
+    atomic --> map["Knowledge map / Canvas"]
     original --> map
-    map --> output["Output<br/>文章 / 视频 / 社群"]
+    map --> output["Output<br/>articles / scripts / community content"]
 ```
 
-### 核心特性
+## Core Features
 
-1. **原子笔记与原创库分离**：已被证实的知识（TC/TM/TN）与你的原创内容（OT/OM/OC）物理分离
-2. **三层分类体系**：库归属 → 形态 → 学科，清晰的知识组织结构
-3. **6种PREFIX**：`TC/TM/TN`（已证实） + `OT/OM/OC`（原创），一目了然
-4. **编码-解码-原子化**：三段式知识加工流程，从信息到知识的系统化转化
-5. **去景观化约束**：AI 输出必须可操作、可验证，拒绝空洞套话
-6. **双向链接网络**：自动建立知识关联，形成你的认知图谱
+1. **Raw-to-formal workflow**: raw fragments first go to `00-Inbox` or `AI融合笔记`; only confirmed material becomes an encoded note.
+2. **Verified vs original separation**: `03-Atomic` stores verified knowledge; `04-原创` stores your original terms, models, and concepts.
+3. **Three-layer organization**: library -> form -> discipline.
+4. **Six prefixes**: `TC/TM/TN` for verified knowledge and `OT/OM/OC` for original knowledge.
+5. **7 analysis checks**: decoding uses a checklist, not a confusing “dimension” system.
+6. **Bidirectional knowledge network**: source links, derived-note links, and horizontal links keep knowledge traceable.
 
-### 推荐阅读路径
+## Recommended Reading Path
 
-| 目标 | 入口 |
+| Goal | Start Here |
 |---|---|
-| 先看懂系统全貌 | [知识库视觉导览](docs/知识库视觉导览.md) |
-| 马上创建知识库 | [快速开始](#-快速开始) |
-| 查命名、状态、分类规则 | [常见问题](docs/FAQ.md) |
-| 配置 AI 工作流 | [SKILL工作流v2.5](docs/SKILL-v2_5.md) |
+| Understand the whole system | [Visual Guide](docs/知识库视觉导览.md) |
+| Create a vault quickly | [Quick Start](#quick-start) |
+| Check naming, status, and classification rules | [FAQ](docs/FAQ.md) |
+| Configure the AI workflow | [SKILL v2.5](docs/SKILL-v2_5.md) |
+| Read the full guide | [Wenxi Knowledge Network v2.5 Guide](docs/文希知识网络v2.5完整说明与使用指南.md) |
 
-## 🚀 快速开始
+## Quick Start
 
-### 前置要求
+### Requirements
 
 - Python 3.7+
 - PyYAML
 - Obsidian
 - Git
 
-### 安装步骤
-
-#### 1. 克隆仓库
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/vincci-wenxi/vincci-knowledge-network.git
 cd vincci-knowledge-network
 ```
 
-#### 2. 安装依赖
+### 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-#### 3. 创建知识库结构
+### 3. Create the Vault Structure
+
+Edit `setup-vault.sh` and set `VAULT_ROOT` to your target vault path:
 
 ```bash
-# 修改 setup-vault.sh 中的目标路径（第6行）
-# VAULT_ROOT="你的知识库根目录路径"
+# In setup-vault.sh
+VAULT_ROOT="$HOME/Wenxi Knowledge Network"
 
 bash setup-vault.sh
 ```
 
-#### 4. 配置路径
+### 4. Configure Paths
 
-复制配置模板并编辑：
+Copy the config template and update `vault_root`:
 
 ```bash
 cp config-template.yaml .knowledge-network-config.yaml
-# 编辑 .knowledge-network-config.yaml，填入你的 vault_root 路径
+# Edit .knowledge-network-config.yaml and set paths.vault_root
 ```
 
-#### 5. 配置 Claude/AI 工作流（可选）
+### 5. Configure the AI Workflow Optional
 
 ```bash
 mkdir -p .claude/skills
 cp docs/SKILL-v2_5.md .claude/skills/knowledge-network-workflow.md
 ```
 
-## 📁 目录结构
+## Directory Structure
 
-```
-文希知识网络/
-├── 编码笔记/                   # @编码 后生成的结构化笔记
-├── 解码笔记/                   # AI 7项解码分析
+The generated vault uses Chinese directory names because this workflow is designed for a Chinese Obsidian environment.
+
+```text
+<vault-root>/
+├── 编码笔记/                   # structured notes generated after @编码
+├── 解码笔记/                   # AI decoding notes with 7 analysis checks
 ├── Obsidian Vault/
-│   ├── 00-Inbox/              # 未整理笔记 / 收件箱
-│   ├── 01-Projects/           # PARA 项目
-│   ├── 02-Areas/              # PARA 领域
-│   ├── 03-Atomic/             # 原子笔记（已证实）
+│   ├── 00-Inbox/              # raw notes / inbox
+│   ├── 01-Projects/           # PARA projects
+│   ├── 02-Areas/              # PARA areas
+│   ├── 03-Atomic/             # verified knowledge
 │   │   ├── TC-术语/
 │   │   ├── TM-思维模型/
 │   │   └── TN-概念/
-│   ├── 04-原创/               # 原创库（用户新创）
+│   ├── 04-原创/               # original knowledge created by the user
 │   │   ├── OT-原创术语/
 │   │   ├── OM-原创思维模型/
 │   │   └── OC-原创概念/
@@ -132,130 +137,135 @@ cp docs/SKILL-v2_5.md .claude/skills/knowledge-network-workflow.md
 └── .knowledge-network-config.yaml
 ```
 
-## 🛠️ 脚本工具
+## Scripts
 
-### kn_common.py
+### `kn_common.py`
 
-共享工具库，提供配置加载、frontmatter 读写、文件扫描等功能。
+Shared utilities for config loading, frontmatter handling, filename parsing, and note scanning.
 
-### kn_dedup.py
+### `kn_dedup.py`
 
-原子笔记去重检测与概念注册表同步。
-
-```bash
-# 扫描全库重复
-python scripts/kn_dedup.py --vault <知识库根目录> scan
-
-# 检查概念是否存在
-python scripts/kn_dedup.py --vault <知识库根目录> check --concept 符号暴力
-
-# 重建概念注册表
-python scripts/kn_dedup.py --vault <知识库根目录> sync-registry --apply
-```
-
-### kn_links.py
-
-幽灵链接（断链）检测与修复。
+Duplicate detection and concept registry synchronization.
 
 ```bash
-# 检查幽灵链接
-python scripts/kn_links.py --vault <知识库根目录> check
+# Scan duplicates across verified and original libraries
+python scripts/kn_dedup.py --vault <vault-root> scan
 
-# 自动修复
-python scripts/kn_links.py --vault <知识库根目录> fix --apply
+# Check whether a concept already exists
+python scripts/kn_dedup.py --vault <vault-root> check --concept "symbolic violence"
+
+# Rebuild the concept registry
+python scripts/kn_dedup.py --vault <vault-root> sync-registry --apply
 ```
 
-### kn_status.py
+### `kn_links.py`
 
-编码笔记状态机自动流转。
+Ghost link detection and repair.
 
 ```bash
-# 检查待流转的笔记
-python scripts/kn_status.py --vault <知识库根目录> check
+# Check ghost links
+python scripts/kn_links.py --vault <vault-root> check
 
-# 执行状态流转
-python scripts/kn_status.py --vault <知识库根目录> advance --apply
+# Apply automatic fixes
+python scripts/kn_links.py --vault <vault-root> fix --apply
 ```
 
-## 📝 命名规范
+### `kn_status.py`
 
-### 编码笔记
+Status machine for encoded notes.
 
-```
-CODE-YYYYMMDD-SEQ@TYPE-标题.md
-例：DK-20250510-001@v1-读书笔记.md
-```
+```bash
+# Preview pending status transitions
+python scripts/kn_status.py --vault <vault-root> check
 
-### 原子笔记（已证实）
-
-```
-PREFIX-CODE-概念名.md
-例：TC-CE-符号暴力.md
-    TM-DK-第一性原理.md
-    TN-CE-认知失调.md
+# Apply status transitions
+python scripts/kn_status.py --vault <vault-root> advance --apply
 ```
 
-### 原创笔记
+Run maintenance scripts without `--apply` first to preview changes, then rerun with `--apply` after reviewing the output.
 
+## Naming Rules
+
+### Encoded Notes
+
+```text
+CODE-YYYYMMDD-SEQ@TYPE-title.md
+Example: DK-20250510-001@v1-reading-notes.md
 ```
-PREFIX-CODE-概念名.md
-例：OT-CE-新术语.md
-    OM-CE-AB面分析框架.md
-    OC-CE-框架觉知.md
+
+### Atomic Notes Verified Knowledge
+
+```text
+PREFIX-CODE-concept.md
+Examples:
+TC-CE-symbolic-violence.md
+TM-DK-first-principles.md
+TN-CE-cognitive-dissonance.md
 ```
 
-## 🔤 缩写速查
+### Original Notes
 
-### 学科编码（7类）
+```text
+PREFIX-CODE-concept.md
+Examples:
+OT-CE-original-term.md
+OM-CE-two-sided-analysis-framework.md
+OC-CE-framework-awareness.md
+```
 
-| 缩写 | 中文 | English |
-|:---:|------|---------|
-| LE | 人生体验 | Life Experience |
-| DK | 学科知识 | Discipline Knowledge |
-| AP | 艺术感知 | Artistic Perception |
-| CE | 认知进化 | Cognitive Evolution |
-| PA | 实践活动 | Practical Activity |
-| LT | 文学创作 | Literature |
-| XX | 交叉学科 | Interdisciplinary |
+## Abbreviations
 
-### PREFIX（形态标识）
+### Discipline Codes
 
-**已证实（Verified/Trusted）**
+| Code | Area |
+|:---:|------|
+| LE | Life Experience |
+| DK | Discipline Knowledge |
+| AP | Artistic Perception |
+| CE | Cognitive Evolution |
+| PA | Practical Activity |
+| LT | Literature |
+| XX | Interdisciplinary |
 
-| 缩写 | 形态 | 含义 |
+### Prefixes
+
+**Verified Knowledge**
+
+| Prefix | Form | Meaning |
 |:---:|------|------|
-| TC | 术语 | Verified Term Card |
-| TM | 思维模型 | Verified Thinking Model |
-| TN | 概念 | Verified Concept |
+| TC | Term | Verified Term Card |
+| TM | Thinking Model | Verified Thinking Model |
+| TN | Concept | Verified Concept |
 
-**原创（Original）**
+**Original Knowledge**
 
-| 缩写 | 形态 | 含义 |
+| Prefix | Form | Meaning |
 |:---:|------|------|
-| OT | 原创术语 | Original Term |
-| OM | 原创思维模型 | Original Model |
-| OC | 原创概念 | Original Concept |
+| OT | Original Term | Original Term |
+| OM | Original Model | Original Thinking Model |
+| OC | Original Concept | Original Concept |
 
-## 📚 文档
+## Documentation
 
-- [v2.5完整说明与使用指南](docs/文希知识网络v2.5完整说明与使用指南.md)
-- [知识库视觉导览](docs/知识库视觉导览.md)
-- [SKILL工作流v2.5](docs/SKILL-v2_5.md)
-- [常见问题](docs/FAQ.md)
+- [Chinese README](README_CN.md)
+- [Wenxi Knowledge Network v2.5 Guide](docs/文希知识网络v2.5完整说明与使用指南.md)
+- [Visual Guide](docs/知识库视觉导览.md)
+- [SKILL v2.5](docs/SKILL-v2_5.md)
+- [FAQ](docs/FAQ.md)
 
-## 🤝 贡献
+## Contributing
 
-欢迎提交 Issue 和 Pull Request！
+Issues and pull requests are welcome.
 
-## 📄 许可证
+## License
 
 MIT License
 
-## 👥 联系方式
+## Contact
 
-- 众推客科技 · 文希AI社区
-- #AI搭子圈
+- Zhongtuike Technology · Wenxi AI Community
+- AI Companion Circle
 
 ---
 
-**让知识有序生长，已证实归已证实，原创归原创。**
+Verified knowledge stays verified. Original ideas stay original. Let knowledge grow with structure.
